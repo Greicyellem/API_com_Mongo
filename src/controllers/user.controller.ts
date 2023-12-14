@@ -54,6 +54,6 @@ export const authUser = async (req: Request, res: Response) => {
 
     const token = jwt.sign({user_id: User}, jsonSecret, {expiresIn: '30m'})
     
-    res.json(token);
+    res.json({'token': token, 'user': user});
 
 }

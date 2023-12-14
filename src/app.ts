@@ -5,13 +5,24 @@ import productRoutes from '../src/routes/product.routes'
 import categoryRoutes from '../src/routes/category.routes'
 import userRoutes from '../src/routes/user.routes'
 import authRoutes from '../src/routes/auth.routes'
+import cors from 'cors';
 
 
 
 const app = express()
-const PORT = 3000
+const PORT = 3000;
+
+const corsOptions = {
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204,
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    exposedHeaders: ['Content-Disposition'],
+};
 
 app.use(bodyParser.json())
+app.use(cors(corsOptions))
 
 mongoose.connect('mongodb://localhost:27017/mongostore', {
     family: 4
