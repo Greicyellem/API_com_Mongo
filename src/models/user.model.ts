@@ -4,6 +4,7 @@ interface Iuser extends Document {
     user_name: string; 
     user_username: string; 
     user_password: string;
+    user_image: string;
     user_email: string;
     user_phone: string;
     user_city: string;
@@ -16,6 +17,7 @@ const userSchema = new Schema({
     user_name: { type: String, required: true },
     user_username: { type: String, required: true },
     user_password: { type: String, required: true },
+    user_image: {type: String, required: true},
     user_email: { type: String, required: true },
     user_phone: { type: String, required: true },
     user_city: { type: String, required: true },

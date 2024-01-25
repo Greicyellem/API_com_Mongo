@@ -2,12 +2,9 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import productRoutes from '../src/routes/product.routes'
-import categoryRoutes from '../src/routes/category.routes'
 import userRoutes from '../src/routes/user.routes'
 import authRoutes from '../src/routes/auth.routes'
 import cors from 'cors';
-
-
 
 const app = express()
 const PORT = 3000;
@@ -33,11 +30,11 @@ mongoose.connection.on("connected", () => {
 mongoose.connection.on("error", (err) => {
     console.error("Erro na conexão com o MongoDB:", err)
 })
+app.use(express.static('uploads'));
 
 app.use('/products', productRoutes)
-app.use('/users', userRoutes)
-app.use('/categories', categoryRoutes)
-app.use('/auth', authRoutes)
+app.use('/users', userRoutes);
+app.use('/auth', authRoutes);
 
 app.listen(PORT, () => {
     console.log('Servidor rodando em http://localhost:'+PORT)
